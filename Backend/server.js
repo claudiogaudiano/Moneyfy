@@ -15,7 +15,7 @@ const LocalStrategy = require('passport-local').Strategy;
 // Permette di gestire richieste da domini diversi 
 // (necessario per la comunicazione con il frontend)
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://moneyfyfrontend.onrender.com/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
