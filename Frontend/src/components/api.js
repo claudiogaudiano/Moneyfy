@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000";
+const url = "https://moneyfybackend.onrender.com";
 
 // api per la creazione dell'utente
 export async function createUser(user) {
