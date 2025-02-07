@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, TextField, Box, Card, CardContent, Typography } from '@mui/material';
 import { setCookie } from "../../cookieFunction";
 
-const Login = (/* { setIsLogged } */) => {
+const Login = ({ setIsLogged }) => {
     const [user, setUser] = React.useState({
         username: '',
         password: '',
@@ -21,7 +21,7 @@ const Login = (/* { setIsLogged } */) => {
             const res = await authenticate(user);
             if (res.data.token) {
                 setCookie('User', res.data.token, 1);
-                /* setIsLogged(true); */
+                setIsLogged(true);
                 alert('Login effettuato!');
                 navigate('/');            
             }
