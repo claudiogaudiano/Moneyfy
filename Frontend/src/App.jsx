@@ -5,16 +5,12 @@ import Home from './components/Home/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
-/* import FixedLayout from './components/FixedLayout/FixedLayout';
- *//* import { getCookie } from './cookieFunction';
- */import Transactions from './components/Transactions';
+import Transactions from './components/Transactions';
 import PrivateRoute from './PrivateRoute';
 
 const App = () => {
-  /*   const token = getCookie('User');
-    const [isLogged, setIsLogged] = useState(!!token);
-    */
-  // Caricare i valori da localStorage
+
+  // Carica i valori da localStorage
   const [totSpese, setTotSpese] = useState(() => {
     return Number(localStorage.getItem('totSpese')) || 0;
   });
@@ -23,7 +19,7 @@ const App = () => {
     return Number(localStorage.getItem('totGuadagni')) || 0;
   });
 
-  // Salvare i valori quando cambiano
+  // Salva i valori quando cambiano
   useEffect(() => {
     localStorage.setItem('totSpese', totSpese);
     localStorage.setItem('totGuadagni', totGuadagni);
@@ -31,15 +27,15 @@ const App = () => {
 
   return (
     <Router>
-      {/* Rotte pubbliche */}
       <Routes>
-        <Route path="/*" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login /* setIsLogged={setIsLogged}  */ />} />
+
+        {/* Rotte pubbliche */}
+        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* <Route path="*" element={<Navigate to="/" />} /> */}
+
         {/* Rotte private */}
         <Route element={<PrivateRoute totSpese={totSpese} totGuadagni={totGuadagni}/>}>
-          {/* <Route element={<FixedLayout totSpese={totSpese} totGuadagni={totGuadagni} />}> */}
           <Route path="/"
             element={<Home
               totSpese={totSpese}
@@ -53,8 +49,8 @@ const App = () => {
               totSpese={totSpese}
               totGuadagni={totGuadagni}
             />} />
-          {/* </Route> */}
         </Route>
+        
       </Routes>
     </Router>
   );
