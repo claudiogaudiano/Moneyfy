@@ -30,12 +30,14 @@ const App = () => {
       <Routes>
 
         {/* Rotte pubbliche */}
-        <Route path="*" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<Navigate to={"/login"} />} />
+        <Route element={<PrivateRoute totSpese={totSpese} totGuadagni={totGuadagni} />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
 
         {/* Rotte private */}
-        <Route element={<PrivateRoute totSpese={totSpese} totGuadagni={totGuadagni}/>}>
+        <Route element={<PrivateRoute totSpese={totSpese} totGuadagni={totGuadagni} />}>
           <Route path="/"
             element={<Home
               totSpese={totSpese}
@@ -50,7 +52,7 @@ const App = () => {
               totGuadagni={totGuadagni}
             />} />
         </Route>
-        
+
       </Routes>
     </Router>
   );
